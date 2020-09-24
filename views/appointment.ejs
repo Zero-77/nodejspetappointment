@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>填寫掛號資料</title>
+    <link rel="shortcut icon" href="#"/>
+    <!--CSS href 記得要載入-->
+    <link rel="stylesheet" href="css/appointment.css" type="text/css" />
+  </head>
+
+  <body>
+    <!--動態下拉式選單:兩框連動-->
+     
+    <div class="rectangle">
+        <form name="myForm" class="myForm" action="appointment" method="post" accept-charset="utf-8">
+        <p>地區：</p>
+        <select class="locationsForm" style="width:40%;" onChange="renew((this.selectedIndex)-1);">
+          <option value="">地區</option>
+          <option value="0">臺北地區</option>
+          <option value="1">臺中地區</option>
+          <option value="2">高雄地區</option>
+          <option value="3">花蓮地區</option>
+        </select>
+        <br>
+        <p>醫院：</p>
+        <select name="hospital" size=3 class="locationhospital">
+          <option value="">請由左方選取系別
+        </select>
+
+        <br>
+        <p>預約日期及時間:</p>
+        <label class="appointmentdate">
+          <input type="date" name="appointmentday">
+          <span class="validity"></span>
+        </label>  
+      <div class="custom-select" style="width:30%;"> <!--調整寬度-->
+        <select name="appointmenttime">
+          <option value="10:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+        </select>
+      </div>
+      <br>
+      <p>看診分類:</p>
+      <br>
+      <label class="radiobutton">寵物看診
+        <input type="radio" id="classification" name="classification" checked="checked" value="hurtorsick">
+        <span class="checkmark"></span>
+      </label>
+        <br>
+      <label class="radiobutton">寵物回診
+        <input type="radio" id="classification" name="classification" value="return">
+        <span class="checkmark"></span>
+        <br>
+      </label>
+
+
+      <p>您所飼養的寵物:</p>
+      <br>
+      <label class="radiobutton">寵物犬類
+        <input type="radio" id="petsclass" name="petsclass" checked="checked" value="dog" onClick="regularpets()">
+        <span class="checkmark"></span>
+      </label>
+      <label class="radiobutton">寵物貓類
+        <input type="radio" id="petsclass" name="petsclass" value="cat" onClick="regularpets()">
+        <span class="checkmark"></span>
+        <br>
+      </label>
+      <label class="radiobutton">寵物鳥類
+        <input type="radio" id="petsclass" name="petsclass" value="bird" onClick="regularpets()">
+        <span class="checkmark"></span>
+        <br>
+      </label>
+      <label class="radiobutton">爬蟲類
+        <input type="radio" id="petsclass" name="petsclass" value="Reptilia" onClick="regularpets()">
+        <span class="checkmark"></span>
+        <br>
+      </label>
+      <label class="radiobutton">魚類
+        <input type="radio" id="petsclass" name="petsclass" value="fish" onClick="regularpets()">
+        <span class="checkmark"></span>
+        <br>
+      </label>
+      <label class="radiobutton">哺乳動物類
+        <input type="radio" id="petsclass" name="petsclass" value="Mammalia" onClick="regularpets()">
+        <span class="checkmark"></span>
+        <br>
+      </label>
+
+      
+      <label onclick="otherpets()" class="radiobutton">
+        <input type="radio" id="otherpets" name="petsclass" value="otherpets" >其他類寵物:</input>
+        <span class="checkmark"></span>
+        <br>
+        <input type ="text" name="otherpets" id="other_text" class="text">
+      </label>  
+        <br>
+      
+
+      <p>寵物性別:</p>
+      <br>
+      <label class="radiobutton">公
+        <input type="radio" id="petsgender" name="petsgender" checked="checked" value="male">
+        <span class="checkmark"></span>
+      </label>
+      <label class="radiobutton">母
+        <input type="radio" id="petsgender" name="petsgender" value="female">
+        <span class="checkmark"></span>
+        <br>
+      </label>
+      <label class="radiobutton">其他或不清楚
+        <input type="radio" id="petsgender" name="petsgender" value="other">
+        <span class="checkmark"></span>
+        <br>
+      </label>
+
+      <br>
+      <p>飼主、預約人姓名:</p>
+      <label  class="radiobutton">
+        <br>
+        <input type ="text" name="names" id="names" class="text">
+      </label>
+      <br>  
+      <p>聯絡電話:</p>
+      <label  class="radiobutton">
+        <br>
+        <input type ="text" name="phonenumber" id="phonenumber" class="text">
+      </label>
+      <br>
+      <p>其他事項:</p>
+      <label  class="othertext">
+        <br>
+        <input type ="text" name="something" id="something" class="text">
+      </label>
+
+      <br><br><br><br>
+      <label class="submitcss">
+        <input type='submit' value='Submit'>
+        <input type='button' value='Back' onclick="javascript: location.href='/'">
+      </label>
+        
+    </form>
+      <br><br><br><br>
+
+    </div>
+          <!-- javascript select option-->
+
+
+
+          <script>
+            function otherpets(){
+            a=document.getElementById('other_pets');
+            a.checked=true;     //check a is checked
+            }
+            function regularpets(){
+            a=document.getElementById('other_text');
+            a.value="";
+            }
+          </script>
+
+
+
+          <script>
+            locations=new Array();
+            locations[0]=["臺大獸醫院","開心獸醫院","開心獸醫院","開心獸醫院"];  //台北
+            locations[1]=["中興獸醫院"];               //台中
+            locations[2]=["第一獸醫院","健康獸醫院"];  //高雄
+            locations[3]=["安心獸醫院"];
+            /*locations=new Array();
+            locations[0]=["123","456","789","123"];  //台北
+            locations[1]=["123"];               //台中
+            locations[2]=["1231","22321"];  //高雄
+            locations[3]=["535355"];*/
+            function renew(index){
+              for(var i=0;i<locations[index].length;i++)
+                document.myForm.hospital.options[i]=new Option(locations[index][i], locations[index][i]);	// 設定新選項
+              document.myForm.hospital.length=locations[index].length;	// 刪除多餘的選項
+            }
+          </script>
+
+
+          <script>
+            var x, i, j, l, ll, selElmnt, a, b, c;
+            /*look for any elements with the class "custom-select":*/
+            x = document.getElementsByClassName("custom-select");
+            l = 10;
+            for (i = 0; i < l; i++) {
+              selElmnt = x[i].getElementsByTagName("select")[0];
+              ll = selElmnt.length;
+              /*for each element, create a new DIV that will act as the selected item:*/
+              a = document.createElement("DIV");
+              a.setAttribute("class", "select-selected");
+              a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+              x[i].appendChild(a);
+              /*for each element, create a new DIV that will contain the option list:*/
+              b = document.createElement("DIV");
+              b.setAttribute("class", "select-items select-hide");
+              for (j = 0; j < ll; j++) {
+                /*for each option in the original select element,
+                create a new DIV that will act as an option item:*/
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click", function(e) {
+                    /*when an item is clicked, update the original select box,
+                    and the selected item:*/
+                    var y, i, k, s, h, sl, yl;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    sl = s.length;
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < sl; i++) {
+                      if (s.options[i].innerHTML == this.innerHTML) {
+                        s.selectedIndex = i;
+                        h.innerHTML = this.innerHTML;
+                        y = this.parentNode.getElementsByClassName("same-as-selected");
+                        yl = y.length;
+                        for (k = 0; k < yl; k++) {
+                          y[k].removeAttribute("class");
+                        }
+                        this.setAttribute("class", "same-as-selected");
+                        break;
+                      }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+              }
+              x[i].appendChild(b);
+              a.addEventListener("click", function(e) {
+                  /*when the select box is clicked, close any other select boxes,
+                  and open/close the current select box:*/
+                  e.stopPropagation();
+                  closeAllSelect(this);
+                  this.nextSibling.classList.toggle("select-hide");
+                  this.classList.toggle("select-arrow-active");
+                });
+            }
+            function closeAllSelect(elmnt) {
+              /*a function that will close all select boxes in the document,
+              except the current select box:*/
+              var x, y, i, xl, yl, arrNo = [];
+              x = document.getElementsByClassName("select-items");
+              y = document.getElementsByClassName("select-selected");
+              xl = x.length;
+              yl = y.length;
+              for (i = 0; i < yl; i++) {
+                if (elmnt == y[i]) {
+                  arrNo.push(i)
+                } else {
+                  y[i].classList.remove("select-arrow-active");
+                }
+              }
+              for (i = 0; i < xl; i++) {
+                if (arrNo.indexOf(i)) {
+                  x[i].classList.add("select-hide");
+                }
+              }
+            }
+            /*if the user clicks anywhere outside the select box,
+            then close all select boxes:*/
+            document.addEventListener("click", closeAllSelect);
+          </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        
+        <link rel="stylesheet" href="css/index.css" type="text/css" />
+    </head>
+  <body>
+<h1>List</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>醫院</th>
+        <th>日期</th>
+        <th>時間</th>
+        <th>看診類別</th>
+        <th>寵物種類</th>
+        <th>其他種類</th>
+        <th>寵物性別</th>
+        <th>預約者姓名</th>
+        <th>預約者電話</th>
+        <th>其他事項</th>
+    </tr>
+    <% for ( var i = 0 ; i < data.length ; i++){ %>
+        <tr>
+            <td>
+                <%= data[i].ID  %>
+            </td>
+            <td>
+                <%= data[i].hospital  %>
+            </td>
+            <td>
+                <%= data[i].day  %>
+            </td>
+            <td>
+                <%= data[i].time  %>
+            </td>
+            <td>
+              <%= data[i].classification  %>
+            </td>
+            <td>
+              <%= data[i].petsclass  %>
+            </td>
+            <td>
+              <%= data[i].otherpets  %>
+            </td>
+            <td>
+              <%= data[i].petsgender  %>
+            </td>
+            <td>
+              <%= data[i].names  %>
+            </td>
+            <td>
+              <%= data[i].phonenumber  %>
+            </td>
+            <td>
+              <%= data[i].something  %>
+            </td>
+        </tr>
+        <% } %>
+</table>
+</body>
+</html>
